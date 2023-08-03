@@ -1,0 +1,17 @@
+---
+interface Props {
+  current_page: Number;
+}
+
+const { current_page } = Astro.props;
+---
+
+<div class="grid grid-cols-9 place-content-center text-center">
+  <div class="p-4 col-span-2"></div>
+  <div class="p-4 col-span-1"><a href="/">home</a></div>
+  <div class="p-4 col-span-1"><a href="/aboutme">about me</a></div>
+  <div class="p-4 col-span-1"><a href="/projects">progetti</a></div>
+  <div class="p-4 col-span-1"><a href="/contacts">contatti</a></div>
+  <div class="p-4 col-span-1"><a href="/cv">cv</a></div>
+  <div class="p-4 col-span-2"></div>
+</div>
