@@ -1,11 +1,12 @@
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
-	theme: {
-		container: {
-			center: true,
-		},
-	},
+/** @type {import('tailwindcss').Config}*/
+const config = {
+  content: ["./src/**/*.{html,js,svelte,ts}"],
 
-	plugins: [],
-}
+  theme: {
+    extend: {},
+  },
+
+  plugins: [require('tailwind-scrollbar'),],
+};
+
+module.exports = config;
