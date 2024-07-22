@@ -1,5 +1,14 @@
 {
 	"extends": "./.svelte-kit/tsconfig.json",
+	"include": [
+		"src/**/*",
+		"src/node_modules"
+	],
+	"exclude": [
+		"node_modules/*",
+		"__sapper__/*",
+		"public/*"
+	],
 	"compilerOptions": {
 		"allowJs": true,
 		"checkJs": true,
@@ -9,7 +18,11 @@
 		"skipLibCheck": true,
 		"sourceMap": true,
 		"strict": true,
-		"verbatimModuleSyntax": true
+		"verbatimModuleSyntax": true,
+		"ignoreDeprecations": "5.0",
+		"types": [
+			"@sveltejs/kit"
+		]
 	}
 	// Path aliases are handled by https://kit.svelte.dev/docs/configuration#alias
 	//
