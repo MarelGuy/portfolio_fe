@@ -1,74 +1,30 @@
 <script lang="ts">
-    import { whichPage } from "../scripts/global";
+    import { routeIndex, possibleRoutes } from "../scripts/global";
+    import Navlink from "./Navlink.svelte";
 
     import "../styles/Navbar.scss";
 
-    // Page checking
-    let active: string;
+    let active: number;
 
-    whichPage.subscribe((value) => {
+    routeIndex.subscribe((value) => {
         active = value;
     });
 </script>
 
-<svelte:head>
-    <title>{active}</title>
-</svelte:head>
-
-<section>
-    {#if active === "home"}
-        <a
-            class="nav_item col-span-1 active:text-gray-300 text-gray-500"
-            href="/"
-        >
-            Home
-        </a>
-    {:else}
-        <a
-            class="nav_item col-span-1 active:text-gray-500 hover:text-gray-400 text-gray-300"
-            href="/"
-        >
-            Home
-        </a>
-    {/if}
-
-    {#if active === "aboutme"}
-        <a
-            class="nav_item col-span-1 active:text-gray-300 text-gray-500"
-            href="/aboutme"
-        >
-            About me
-        </a>
-    {:else}
-        <a
-            class="nav_item col-span-1 active:text-gray-500 hover:text-gray-400 text-gray-300"
-            href="/aboutme"
-        >
-            About me
-        </a>
-    {/if}
-
-    {#if active === "projects"}
-        <a
-            class="nav_item col-span-1 active:text-gray-300 text-gray-500"
-            href="/projects"
-        >
-            Projects
-        </a>
-    {:else}
-        <a
-            class="nav_item col-span-1 active:text-gray-500 hover:text-gray-400 text-gray-300"
-            href="/projects"
-        >
-            Projects
-        </a>
-    {/if}
-
-    <a
-        class="nav_item col-span-1 active:text-gray-500 hover:text-gray-400 text-gray-300"
-        href={import.meta.env.VITE_API_URL + "/page/cv"}
-        target="_blank"
+<div class="bg-black min-h-24 h-1/4 pt-[5vh] pb-[6vh] font-bold">
+    <section
+        class="grid grid-cols-4 text-center pt-4 mx-auto w-[60vw] sticky top-0"
     >
-        CV
-    </a>
-</section>
+        {#each possibleRoutes as possibleRoute}
+            <Navlink {active} navLinkData={possibleRoute} />
+        {/each}
+
+        <a
+            class="col-span-1 text-3xl text-gray-300"
+            href={import.meta.env.VITE_API_URL + "/page/cv"}
+            target="_blank"
+        >
+            CV
+        </a>
+    </section>
+</div>

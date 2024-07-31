@@ -3,7 +3,12 @@ const config = {
   content: ["./src/**/*.{html,js,svelte,ts}"],
 
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        navbar_bg_active: "#EAFEFC",
+        navbar_text_active: "#51ADC1"
+      }
+    }
   },
 
   plugins: [require('tailwind-scrollbar'),],

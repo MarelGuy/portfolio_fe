@@ -1,6 +1,12 @@
 interface ImportMetaEnv {
     readonly VITE_API_URL: string;
-    // ... other env variables
+    readonly VITE_CURRENT_HOST: string;
+}
+
+interface Route {
+    title: string,
+    page: any,
+    index: number,
 }
 
 interface ImportMeta {

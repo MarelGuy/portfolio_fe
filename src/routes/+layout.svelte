@@ -1,22 +1,28 @@
 <script lang="ts">
     import { page } from "$app/stores";
-    import { whichPage } from "../scripts/global";
-
-    import "../styles/global.scss";
+    import { onMount } from "svelte";
 
     import Navbar from "../components/Navbar.svelte";
 
-    page.subscribe(async (value) => {
-        if (value.route && value.route.id)
-            whichPage.set(
-                value.route.id === "/" ? "home" : value.route.id.substring(1),
-            );
+    import "../styles/global.scss";
+
+    onMount(() => {
+        // Mobile check
+        if (
+            /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(
+                navigator.userAgent,
+            )
+        )
+            window.location.href = `https://mobile.${import.meta.env.VITE_CURRENT_HOST}.com`;
+
+        // Redirect
+        page.subscribe((value) => {
+            if (value.url.pathname != "/") window.location.href = "/";
+        });
     });
 </script>
 
 <body>
-    <div class="container mx-auto">
-        <Navbar />
-        <slot />
-    </div>
+    <Navbar />
+    <slot />
 </body>
